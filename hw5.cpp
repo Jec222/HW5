@@ -20,7 +20,7 @@ void BubbleSort(std::vector<std::string> &vec){
     } 
 
 }
-void InsertionSort(std::vector<int>& v){
+/*void InsertionSort(std::vector<int>& v){
   
   if (v.size() <= 1) 
     return;
@@ -36,15 +36,42 @@ void InsertionSort(std::vector<int>& v){
   
     /* Move elements of arr[0..i-1], that are 
       greater than key, to one position ahead 
-      of their current position */
+      of their current position 
     while (j >= 0 && v[j] > last) 
     { 
         v[j+1] = v[j]; 
         j--; 
     } 
     v[j+1] = last; 
+} */
+void insertionSortUtil(std::vector<int> &arr, int n) 
+{ 
+    // Base case 
+    if (n <= 1) 
+        return; 
+  
+    // calling the same function to sort first n-1 elements 
+    insertionSortUtil( arr, n-1 ); 
+  
+    // Insert last element at its correct position 
+    // in sorted array. 
+    int last = arr[n-1]; 
+    int j = n-2; 
+  
+    //Move elements of arr[0..i-1], that are 
+      //greater than key, to one position ahead 
+      //of their current position 
+    while (j >= 0 && arr[j] > last) 
+    { 
+        arr[j+1] = arr[j]; 
+        j--; 
+    } 
+    arr[j+1] = last; 
 } 
-
+void InsertionSort(std::vector <int>&arr){
+    int n=arr.size();
+    insertionSortUtil(arr,n);//this is the helper function 
+}
 void MergeSort(std::vector<std::string> &vec){
 
 }
