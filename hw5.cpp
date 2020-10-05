@@ -50,24 +50,18 @@ void InsertionSortHelper(std::vector<int> & v, int size) {
     return; 
 
   InsertionSortHelper(v, size-1); 
-  
-    // Insert last element at its correct position 
-    // in sorted array. 
-    int last = v[size-1]; 
-    int j = size-2; 
-  
-    //Move elements of arr[0..i-1], that are 
-      //greater than key, to one position ahead 
-      //of their current position 
-    while (j >= 0 && v[j] > last) { 
-        v[j+1] = v[j]; 
-        j--; 
-    } 
-    v[j+1] = last; 
+ 
+  int last = v.at(size-1); 
+  int pos = size-2; 
+
+  while (pos >= 0 && v[pos] > last) { 
+    v.at(pos+1) = v.at(pos); 
+    pos--; 
+  } 
+  v.at(pos+1) = last; 
 } 
 void InsertionSort(std::vector <int>& v){
-    int n=v.size();
-    InsertionSortHelper(v,n);
+  InsertionSortHelper(v,v.size());
 }
 void MergeSort(std::vector<std::string> &vec){
 
