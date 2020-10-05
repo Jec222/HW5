@@ -83,20 +83,17 @@ void merge(std::vector<std::string>&arr, int p, int q, int r)
 
 //This function uses the divid and conquer methodology and divides 
 //till it has just one element ..recursively
-void mergeSortHelper(std::vector<std::string>& arr, int l, int r) 
-{ 
-        if (l < r) { 
-                // Same as (l+r)/2, but avoids overflow for 
-                // large l and h 
-                int m = l + (r - l) / 2; 
-
-                // Sort first and second halves 
-                mergeSortHelper(arr, l, m); 
-                mergeSortHelper(arr, m + 1, r); 
-
-                merge(arr, l, m, r); //this function merges the left sorted
-                //and the right sorted string
-        } 
+void mergeSortHelper(std::vector<std::string>& v, int left, int right){ 
+  if (left < right){ 
+    // Same as (l+r)/2, but avoids overflow for 
+    // large l and h 
+    int middle = left + (right - left) / 2; 
+    // Sort first and second halves 
+    mergeSortHelper(v, left, middle); 
+    mergeSortHelper(v, middle + 1,right); 
+    merge(v, left, middle, right); //this function merges the left sorted
+    //and the right sorted string
+  } 
 } 
 
 void MergeSort(std::vector<std::string>&v){
