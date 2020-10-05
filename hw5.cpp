@@ -1,3 +1,9 @@
+/*
+BubbleSort: 
+will take in a vector 
+*/
+
+
 #include <iostream>
 #include <vector>
 
@@ -6,10 +12,10 @@ void BubbleSort(std::vector<std::string> &vec){
   std::string temp; 
   for (int k = 0; k < vec.size(); k++){ 
     for (int i=k + 1; i < vec.size(); i++) { 
-      if (vec[i].compare(vec[k]) < 0){ 
-        temp = vec[k]; 
-        vec[k] = vec[i];
-        vec[i] = temp;
+      if (vec.at(i).compare(vec.at(k)) < 0){ 
+        temp = vec.at(k); 
+        vec.at(k) = vec.at(i);
+        vec.at(i) = temp;
       } 
     } 
   } 
