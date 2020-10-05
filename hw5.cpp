@@ -39,7 +39,7 @@ void InsertionSort(std::vector <int>& v){
 //this merges two sorted subarrays to one sorted array
 //merge(v, left, middle, right);
 void merge(std::vector<std::string>&v, int left_index, int middle_index, int right_index){ 
-  
+
   int size_one = middle_index-left_index+1;
   int size_two = right_index-middle_index;
   std::vector<std::string> left(size_one);
@@ -49,7 +49,7 @@ void merge(std::vector<std::string>&v, int left_index, int middle_index, int rig
     left[i] = v[left_index+i];
 
   for(int j = 0; j < size_two; j++)
-    right[j]=v[middle_index+j+1];
+    right.at(j)=v.at(middle_index+j+1);
   
     int i=0,j=0;
     int k;
