@@ -7,7 +7,7 @@ void BubbleSort(std::vector<std::string> &vec){
 //void sortStrings(char arr[][MAX], int n
 
   //char temp = vec.at(vec.size()); 
-  
+
     // Sorting strings using bubble sort 
     for (int k = 0; k < vec.size(); k++){ 
       for (int i=k+1; i < vec.size(); i++) { 
