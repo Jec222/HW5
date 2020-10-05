@@ -69,7 +69,7 @@ void merge(std::vector<std::string>&v, int left_index, int middle_index, int rig
     }
 
     for(j = j; j < size_two; j++){
-      v[k] = right[j];
+      v.at(k) = right.at(j);
       k++;
     }
 } 
