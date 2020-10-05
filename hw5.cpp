@@ -55,17 +55,16 @@ void merge(std::vector<std::string>&v, int left_index, int middle_index, int rig
     int k;
     for(k = left_index; k <= right_index && i < size_one && j < size_two; k++){
       if(left.at(i) <= right.at(j)){
-        v[k] = left[i];
+        v.at(k) = left.at(i);
         i++;
       }
       else{
-        v[k] = right[j];
+        v.at(k) = right.at(j);
         j++;
       }
     }
-    for(i = i; i < size_one; ++i)
-    {
-        v[k] = left[i];
+    for(i = i; i < size_one; ++i){
+        v.at(k) = left.at(i);
         k++;
     }
 
