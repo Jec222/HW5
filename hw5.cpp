@@ -54,7 +54,7 @@ void merge(std::vector<std::string>&v, int left_index, int middle_index, int rig
     int i=0,j=0;
     int k;
     for(k = left_index; k <= right_index && i < size_one && j < size_two; k++){
-      if(left[i] <= right[j]){
+      if(left.at(i) <= right.at(j)){
         v[k] = left[i];
         i++;
       }
