@@ -34,72 +34,49 @@ void InsertionSortHelper(std::vector<int> & v, int size) {
 void InsertionSort(std::vector <int>& v){
   InsertionSortHelper(v,v.size());
 } 
-//void MergeSort(std::vector<std::string> &vec){}
 
-//this merges two sorted subarrays to one sorted array
-void merge(std::vector<std::string>&arr, int p, int q, int r) 
-{ 
-    int size1 = q-p+1;
-    int size2 = r-q;
-    std::vector<std::string> L(size1);
-    std::vector<std::string> R(size2);
+void merge(std::vector<std::string>&v, int p, int q, int r){ 
+  int size1 = q-p+1;
+  int size2 = r-q;
+  std::vector<std::string> left(size1);
+  std::vector<std::string> right(size2);
 
-    for(int i = 0; i < size1; i++)
-    {
-        L[i] = arr[p+i];
+  for(int i = 0; i < size1; i++)
+    left.at(i) = v.at(p+i);
+  
+  for(int j = 0; j < size2; j++)
+    right.at(j) = v.at(q+j+1);
+  
+  int i=0,j=0;
+  int k;
+  for(k = p; k <= r && i < size1 && j < size2; k++){
+    if(left.at(i) <= right.at(j)){
+      v.at(k) = left.at(i);
+      i++;
     }
-    for(int j = 0; j < size2; j++)
-    {
-        R[j]=arr[q+j+1];
+    else{
+      v.at(k) = right.at(j);
+      j++;
     }
+  }
+  for(i = i; i < size1; ++i){
+    v.at(k) = left.at(i);
+    k++;
+  }
 
-    int i=0,j=0;
-    int k;
-    for(k = p; k <= r && i < size1 && j < size2; k++)
-    {
-        if(L[i] <= R[j])
-        {
-            arr[k] = L[i];
-            i++;
-        }
-        else
-        {
-            arr[k] = R[j];
-            j++;
-        }
-    }
-    for(i = i; i < size1; ++i)
-    {
-        arr[k] = L[i];
-        k++;
-    }
-
-    for(j = j; j < size2; j++)
-    {
-        arr[k] = R[j];
-        k++;
-    }
+  for(j = j; j < size2; j++){
+    v.at(k) = right.at(j);
+    k++;
+  }
 } 
-
-//This function uses the divid and conquer methodology and divides 
-//till it has just one element ..recursively
-void mergeSortHelper(std::vector<std::string>& arr, int l, int r) 
-{ 
-        if (l < r) { 
-                // Same as (l+r)/2, but avoids overflow for 
-                // large l and h 
-                int m = l + (r - l) / 2; 
-
-                // Sort first and second halves 
-                mergeSortHelper(arr, l, m); 
-                mergeSortHelper(arr, m + 1, r); 
-
-                merge(arr, l, m, r); //this function merges the left sorted
-                //and the right sorted string
-        } 
+void mergeSortHelper(std::vector<std::string>& v, int left, int right){ 
+  if (left < right){ 
+    int middle = left+(right-left)/2; 
+    mergeSortHelper(v,left, middle); 
+    mergeSortHelper(v, ++middle,right); 
+    merge(v, left,middle,right); 
+  } 
 } 
-
-void MergeSort(std::vector<std::string>&arr){
-    int n=arr.size();
-    mergeSortHelper(arr,0,n-1);//helper function
+void MergeSort(std::vector<std::string>&v){
+  mergeSortHelper(v,0,v.size()-1);
 }
