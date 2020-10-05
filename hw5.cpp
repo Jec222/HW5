@@ -88,7 +88,6 @@ void mergeSortHelper(std::vector<std::string>& v, int left, int right){
     //and the right sorted string
   } 
 } 
-
 void MergeSort(std::vector<std::string>&v){
   mergeSortHelper(v,0,v.size()-1);
 }
