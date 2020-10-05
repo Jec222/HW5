@@ -37,21 +37,22 @@ void InsertionSort(std::vector <int>& v){
 //void MergeSort(std::vector<std::string> &vec){}
 
 //this merges two sorted subarrays to one sorted array
-void merge(std::vector<std::string>&v, int p, int q, int r){ 
-  int size1 = q-p+1;
-  int size2 = r-q;
+//merge(v, left, middle, right);
+void merge(std::vector<std::string>&v, int left_index, int middle_index, int right_index){ 
+  int size1 = middle_index-left_index+1;
+  int size2 = right_index-middle_index;
   std::vector<std::string> L(size1);
   std::vector<std::string> R(size2);
 
   for(int i = 0; i < size1; i++)
-    L[i] = v[p+i];
+    L[i] = v[left_index+i];
 
   for(int j = 0; j < size2; j++)
-    R[j]=v[q+j+1];
+    R[j]=v[middle_index+j+1];
   
     int i=0,j=0;
     int k;
-    for(k = p; k <= r && i < size1 && j < size2; k++){
+    for(k = left_index; k <= right_index && i < size1 && j < size2; k++){
       if(L[i] <= R[j]){
         v[k] = L[i];
         i++;
@@ -67,10 +68,9 @@ void merge(std::vector<std::string>&v, int p, int q, int r){
         k++;
     }
 
-    for(j = j; j < size2; j++)
-    {
-        v[k] = R[j];
-        k++;
+    for(j = j; j < size2; j++){
+      v[k] = R[j];
+      k++;
     }
 } 
 
