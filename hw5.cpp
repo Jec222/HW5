@@ -7,23 +7,15 @@ if value1 is grater than value2 swap spots
 
 Insertion Sort:
 
-   
-  if (size <= 1) 
-    return; 
+will check base case if checked the entire list return 
+will call itself again pasing in a vector minus the last element
+will keep track of the last element in vetor
+will keep the positon before the last element in vector  
+will check the position that it does not go under the size of vector
+will also check that the element infront is bigger that the one infront if true 
+change spots 
 
-  InsertionSortHelper(v, size-1); 
- 
-  int last = v.at(size-1); 
-  int pos = size-2; 
 
-  while (pos >= 0 && v[pos] > last) { 
-    v.at(pos+1) = v.at(pos); 
-    pos--; 
-  } 
-  v.at(pos+1) = last; 
-} 
-void InsertionSort(std::vector <int>& v){
-  InsertionSortHelper(v,v.size());
 
 */
 
@@ -64,10 +56,7 @@ void InsertionSortHelper(std::vector<int> & v, int size) {
 void InsertionSort(std::vector <int>& v){
   InsertionSortHelper(v,v.size());
 } 
-//void MergeSort(std::vector<std::string> &vec){}
 
-//this merges two sorted subarrays to one sorted array
-//merge(v, left, middle, right);
 void merge(std::vector<std::string>&v, int left_index, int middle_index, int right_index){ 
 
   int size_one = middle_index-left_index+1;
@@ -81,41 +70,33 @@ void merge(std::vector<std::string>&v, int left_index, int middle_index, int rig
   for(int j = 0; j < size_two; j++)
     right.at(j)=v.at(middle_index+j+1);
   
-    int i=0,j=0;
-    int k;
-    for(k = left_index; k <= right_index && i < size_one && j < size_two; k++){
-      if(left.at(i) <= right.at(j)){
-        v.at(k) = left.at(i);
-        i++;
-      }
-      else{
-        v.at(k) = right.at(j);
-        j++;
-      }
+  int i=0,j=0;
+  int k;
+  for(k = left_index; k <= right_index && i < size_one && j < size_two; k++){
+    if(left.at(i) <= right.at(j)){
+      v.at(k) = left.at(i);
+      i++;
     }
-    for(i = i; i < size_one; ++i){
-        v.at(k) = left.at(i);
-        k++;
-    }
-
-    for(j = j; j < size_two; j++){
+    else{
       v.at(k) = right.at(j);
-      k++;
+      j++;
     }
+  }
+  for(i = i; i < size_one; ++i){
+    v.at(k) = left.at(i);
+    k++;
+  }
+  for(j = j; j < size_two; j++){
+    v.at(k) = right.at(j);
+    k++;
+  }
 } 
-
-//This function uses the divid and conquer methodology and divides 
-//till it has just one element ..recursively
 void mergeSortHelper(std::vector<std::string>& v, int left, int right){ 
   if (left < right){ 
-    // Same as (l+r)/2, but avoids overflow for 
-    // large l and h 
-    int middle = left + (right - left) / 2; 
-    // Sort first and second halves 
+    int middle = left + (right - left) / 2;  
     mergeSortHelper(v, left, middle); 
     mergeSortHelper(v, middle + 1,right); 
-    merge(v, left, middle, right); //this function merges the left sorted
-    //and the right sorted string
+    merge(v, left, middle, right);
   } 
 } 
 void MergeSort(std::vector<std::string>&v){
