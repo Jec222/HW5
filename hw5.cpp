@@ -1,6 +1,30 @@
 /*
 BubbleSort: 
 will take in a vector 
+will create a temp value so that value can change spot
+will loop and will compare values at each element of the vetor
+if value1 is grater than value2 swap spots 
+
+Insertion Sort:
+
+   
+  if (size <= 1) 
+    return; 
+
+  InsertionSortHelper(v, size-1); 
+ 
+  int last = v.at(size-1); 
+  int pos = size-2; 
+
+  while (pos >= 0 && v[pos] > last) { 
+    v.at(pos+1) = v.at(pos); 
+    pos--; 
+  } 
+  v.at(pos+1) = last; 
+} 
+void InsertionSort(std::vector <int>& v){
+  InsertionSortHelper(v,v.size());
+
 */
 
 
