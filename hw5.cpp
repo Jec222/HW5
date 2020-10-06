@@ -15,8 +15,14 @@ will check the position that it does not go under the size of vector
 will also check that the element infront is bigger that the one infront if true 
 change spots 
 
+MergeSort:
 
+will take in a vector 
 
+will chck if right side is grater than left side 
+will find the midlde point of each vector and devide it acordently 
+will call intself recursebly for ach part will pass the vector the the left side parameters and right side respectably 
+after its sorted both sides merge the left vector with the right vector 
 */
 
 
